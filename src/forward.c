@@ -854,7 +854,7 @@ void reply_query(int fd, int family, time_t now)
      had replies from all to avoid filling the forwarding table when
      everything is broken */
   if (forward->forwardall == 0 || --forward->forwardall == 1 ||
-      (RCODE(header) != REFUSED && RCODE(header) != SERVFAIL))
+      (RCODE(header) != REFUSED && RCODE(header) != SERVFAIL && RCODE(header) != NXDOMAIN))
     {
       int check_rebind = 0, no_cache_dnssec = 0, cache_secure = 0, bogusanswer = 0;
 
